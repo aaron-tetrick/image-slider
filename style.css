@@ -123,3 +123,26 @@ body {
 #radio5:checked ~ .navigation-auto .auto-btn5 {
     background-color: rgba(24, 121, 128, 1);
 }
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: rgba(255, 255, 255, .7);
+    font-size: 5rem;
+    border-radius: 0.25rem;
+    padding: 0, .5rem;
+    background-color: rgba(0, 0, 0, .4);
+    cursor: pointer;
+}
+
+.prev {
+    left: 30%;
+}
+
+.next {
+    right: 30%;
+
+}
