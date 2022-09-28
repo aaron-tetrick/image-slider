@@ -1,28 +1,28 @@
 document.querySelector('.prev').addEventListener('click', e => {
-    const first = document.querySelector('.first')
-    const radio1 = document.querySelector('#radio1')
-    const radio2 = document.querySelector('#radio2')
-    
-    console.log(e.target);
-    console.log(first.style.marginLeft)
-    console.log(radio2.style.marginLeft)
+    const first = document.querySelector('.first');
+    radioBtns = Array.from(document.querySelectorAll('.radio-btn'));
 
-    console.log(first.style.marginLeft);
-
-    if (first.style.marginLeft === 0) {
-        console.log('PLZ')
-    } else {
-    first.style.marginLeft = `calc(${first.style.marginLeft} + 20%)`;
-    console.log("HIII", first.style.marginLeft)
-}
-
-    function checkBtns(btn) {
-        if(btn.checked === true) {
-            btn.previousElementSibling.checked = true;
+    for (i=0; i < radioBtns.length; i++) {
+        if (radioBtns[i].checked === true) {
+            if (radioBtns[i].id === 'radio1') {
+            const lastBtn = document.getElementById(`radio${[radioBtns.length]}`)
+            radioBtns[i].checked = false;
+            lastBtn.checked = true;
+            console.log(lastBtn);
+            return;
+            } else {
+                checkBtns(radioBtns[i]);
+            }
         }
     }
+ 
+    first.style.marginLeft = `calc(${first.style.marginLeft} + 20%)`;
 
-    checkBtns(radio2);
+    function checkBtns(btn) {
+       if(btn.checked === true) {
+          btn.previousElementSibling.checked = true;
+       }
+    }
 });
 
 document.querySelector('.next').addEventListener('click', e => {
