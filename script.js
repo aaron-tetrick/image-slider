@@ -51,3 +51,14 @@ document.querySelector('.next').addEventListener('click', e => {
 
 });
 
+let counter = 1;
+
+setInterval(function(){
+    radioBtns = Array.from(document.querySelectorAll('.radio-btn'));
+    document.getElementById('radio' + counter).checked = true;
+    counter++;
+    if(counter > radioBtns.length) {
+        counter = 1;
+    }
+}, 5000);
+
