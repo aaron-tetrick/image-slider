@@ -1,3 +1,13 @@
+function checkBtns(btn, element) {
+    if(btn.checked === true && element === 'prev') {
+       btn.previousElementSibling.checked = true;
+    }  
+    
+    if (btn.checked === true && element === 'next') {
+        btn.nextElementSibling.checked = true;
+    }
+ }
+
 document.querySelector('.prev').addEventListener('click', e => {
     const first = document.querySelector('.first');
     radioBtns = Array.from(document.querySelectorAll('.radio-btn'));
@@ -5,56 +15,39 @@ document.querySelector('.prev').addEventListener('click', e => {
     for (i=0; i < radioBtns.length; i++) {
         if (radioBtns[i].checked === true) {
             if (radioBtns[i].id === 'radio1') {
-            const lastBtn = document.getElementById(`radio${[radioBtns.length]}`)
+            const lastImg = document.getElementById(`radio${[radioBtns.length]}`)
             radioBtns[i].checked = false;
-            lastBtn.checked = true;
-            console.log(lastBtn);
+            lastImg.checked = true;
             return;
             } else {
-                checkBtns(radioBtns[i]);
+                checkBtns(radioBtns[i], 'prev');
             }
         }
     }
  
     first.style.marginLeft = `calc(${first.style.marginLeft} + 20%)`;
-
-    function checkBtns(btn) {
-       if(btn.checked === true) {
-          btn.previousElementSibling.checked = true;
-       }
-    }
 });
 
 document.querySelector('.next').addEventListener('click', e => {
     const first = document.querySelector('.first');
-    const radio1 = document.querySelector('#radio1');
-    const radio2 = document.querySelector('#radio2');
-    
-    console.log(e.target);
+    radioBtns = Array.from(document.querySelectorAll('.radio-btn'));
 
-    console.log(first.style.marginLeft);
-
-    if (first.style.marginLeft === '') {
-        first.style.marginLeft = '0%';
-    }
-    first.style.marginLeft = `calc(${first.style.marginLeft} - 20%)`;
-
-    function checkBtns(btn) {
-        if(btn.checked === true) {
-            btn.nextElementSibling.checked = true;
+    for (i=0; i < radioBtns.length; i++) {
+        if (radioBtns[i].checked === true) {
+            if (radioBtns[i].id === `radio${radioBtns.length}`) {
+            const firstImg = document.getElementById('radio1');
+            radioBtns[i].checked = false;
+            firstImg.checked = true;
+            console.log(firstImg);
+            return;
+            } else {
+                checkBtns(radioBtns[i], 'next');
+                return;
+            }
         }
     }
 
-    checkBtns(radio1);
-
+    first.style.marginLeft = `calc(${first.style.marginLeft} - 20%)`;
 
 });
 
-function checkRadio1() {
-    const radio1 = document.querySelector('#radio1');
-    if (radio1.checked === false) {
-        radio1.checked = true;
-    }
-}
-
-checkRadio1();
